@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NewWeatherApplication</string>
+
+    <string name="appTitle">Welcome!</string>
+</resources>

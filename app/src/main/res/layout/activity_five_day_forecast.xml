@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_forecast_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FiveDayForecast">
+
+    <TextView
+        android:id="@+id/tv_forecast_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+        android:text="5 day Weather report"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rl_condition_today"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_forecast_title"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_weather_icon"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:id="@+id/tv_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_weather_icon"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_weather_icon"
+            android:text="Today"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_today"
+            android:text="Sat Sept 01"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_current_temperature"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_today"
+            android:layout_toRightOf="@id/iv_weather_icon"
+            android:drawableRight="@drawable/ic_degree_celsius"
+            android:gravity="end"
+            android:text="50"
+            android:textColor="@color/textColor"
+            android:textSize="100sp"/>
+
+        <TextView
+            android:id="@+id/tv_weather_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_current_temperature"
+            android:layout_toRightOf="@id/iv_weather_icon"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/textColor"
+            android:text="Partly Cloudy"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/rl_condition_today"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black" />
+
+    <ImageView
+        android:id="@+id/iv_sun"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/view"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/sw_day_night_toggle"
+        android:src="@drawable/ic_sun" />
+
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/sw_day_night_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/iv_moon" />
+
+    <ImageView
+        android:id="@+id/iv_moon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_moon" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_five_day_forecast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sw_day_night_toggle"
+        android:layout_marginTop="30dp" />
+
+    <View
+        android:id="@+id/view_end"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/rv_five_day_forecast"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black" />
+
+
+</RelativeLayout>

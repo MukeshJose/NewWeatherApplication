@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="200dp"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/sub_section_background"
+    android:orientation="vertical"
+    android:weightSum="4">
+
+    <TextView
+        android:id="@+id/tv_forecast_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="23:59"
+        android:textColor="@color/textColor"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/iv_weather_icon"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/tv_forecast_time"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_wind" />
+
+    <TextView
+        android:id="@+id/tv_temperature_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_weather_icon"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="Partly Cloudy"
+        android:textColor="@color/backGroundColor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_temperature_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_temperature_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:drawableRight="@drawable/ic_degree_celsius"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColor"
+        android:textSize="40sp" />
+
+</RelativeLayout>
