@@ -7,22 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".FiveDayForecast">
 
-    <TextView
-        android:id="@+id/tv_forecast_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:padding="10dp"
-        android:text="5 day Weather report"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
     <RelativeLayout
         android:id="@+id/rl_condition_today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_forecast_title"
+        android:layout_marginTop="60dp"
         android:padding="10dp">
 
         <ImageView
@@ -47,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/tv_today"
-            android:text="Sat Sept 01"
             android:textColor="@color/textColor"
             android:textSize="20sp" />
 
@@ -61,25 +50,37 @@
             android:gravity="end"
             android:text="50"
             android:textColor="@color/textColor"
-            android:textSize="100sp"/>
+            android:textSize="100sp" />
 
         <TextView
             android:id="@+id/tv_weather_condition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_current_temperature"
-            android:layout_toRightOf="@id/iv_weather_icon"
             android:layout_marginLeft="20dp"
-            android:textSize="20sp"
+            android:layout_toRightOf="@id/iv_weather_icon"
+            android:text="Partly Cloudy"
             android:textColor="@color/textColor"
-            android:text="Partly Cloudy"/>
+            android:textSize="20sp" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_forecast_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_condition_today"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:text="5 day Weather report"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/rl_condition_today"
+        android:layout_below="@id/tv_forecast_title"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"

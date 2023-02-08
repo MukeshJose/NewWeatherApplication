@@ -72,14 +72,15 @@ public class FiveDayForecast extends AppCompatActivity {
                     Glide.with(getApplicationContext()).load(icon_url + weatherIconNumber + "-s.png").into(ivWeatherIcon);
                     String dateTime = String.valueOf(root.get(0).localObservationDateTime).substring(0, 10);
                     tvDate.setText(dateTime);
-//                    tvCurrentTemperature.setText(root.get(0).);
+                    tvCurrentTemperature.setText((String.valueOf((int) root.get(0).temperature.metric.value)));
+                    tvWeatherCondition.setText(root.get(0).weatherText);
 
                 }
             }
 
             @Override
             public void onFailure(Call<List<Root>> call, Throwable t) {
-
+                Toast.makeText(FiveDayForecast.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
