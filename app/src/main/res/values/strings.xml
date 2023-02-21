@@ -2,4 +2,12 @@
     <string name="app_name">NewWeatherApplication</string>
 
     <string name="appTitle">Welcome!</string>
+    <string name="searchBarQuery">Enter a City Name</string>
+    <string name="foreCastTitle">5 day Weather report!</string>
+
+    <string name="helloText">HELLO</string>
+    <string name="heading_text">Check weather by city name</string>
+
+    <string name="saved_locations">My Saved Locations</string>
+    <string name="clearAll">Clear All</string>
 </resources>

@@ -1,13 +1,16 @@
 package com.example.newweatherapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,12 +19,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.example.newweatherapplication.Adapter.ForecastAdapter;
+import com.example.newweatherapplication.Adapter.InsertLocationAdapter;
 import com.example.newweatherapplication.model.Root;
 import com.example.newweatherapplication.retrofit.APIClient;
 import com.example.newweatherapplication.retrofit.APIInterface;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,6 +40,8 @@ public class WeatherDetailsActivity extends AppCompatActivity {
 
     private RelativeLayout rlSectionView;
     private TextView tvCityName;
+    RelativeLayout relativeLayoutDetails;
+    ShimmerFrameLayout shimmerFrameLayoutDetails;
     private TextView tvTemperature;
     private ImageView ivWeatherIcon;
     private TextView tvWeatherText;
@@ -55,14 +65,30 @@ public class WeatherDetailsActivity extends AppCompatActivity {
     private TextView tvWindDirection;
     private TextView tvWindDegree;
 
+    TextView saveButton;
+    LottieAnimationView lottieAnimationViewDetails;
+
+    public WeatherDetailsActivity() {
+    }
+
+    public WeatherDetailsActivity(ArrayList<InsertLocation> mExampleList) {
+        this.mExampleList = mExampleList;
+    }
+
+    public static ArrayList<InsertLocation> mExampleList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_weather_details_screen);
         initView();
+        relativeLayoutDetails.setVisibility(View.GONE);
+        shimmerFrameLayoutDetails.setVisibility(View.VISIBLE);
+        shimmerFrameLayoutDetails.startShimmer();
+
 
         APIInterface api = APIClient.getClient().create(APIInterface.class);
-        APIInterface apiLocationSearch = APIClient.getClientLocationSearch().create(APIInterface.class);
         APIInterface apiCurrentClimate = APIClient.getClientCurrentCondition().create(APIInterface.class);
         APIInterface apiForecast = APIClient.getClientFullDayForecast().create(APIInterface.class);
 
@@ -89,12 +115,12 @@ public class WeatherDetailsActivity extends AppCompatActivity {
                     location_key = root.get(0).key;
                     tvCityName.setText(root.get(0).englishName);
 
+                    setInsertButton(root.get(0).englishName);
                     FiveDayForecast fiveDayForecast = new FiveDayForecast(location_key);
 
 
                     getCurrentWeather(apiCurrentClimate);
                     getForecast(apiForecast);
-
 
                 } else {
                     Toast.makeText(WeatherDetailsActivity.this, "failed", Toast.LENGTH_SHORT).show();
@@ -116,6 +142,12 @@ public class WeatherDetailsActivity extends AppCompatActivity {
                             rvForecastView.setLayoutManager(layoutManager);
                             ForecastAdapter forecastAdapter = new ForecastAdapter(getApplicationContext(), root);
                             rvForecastView.setAdapter(forecastAdapter);
+
+                            shimmerFrameLayoutDetails.stopShimmer();
+                            shimmerFrameLayoutDetails.setVisibility(View.GONE);
+                            relativeLayoutDetails.setVisibility(View.VISIBLE);
+
+
                         } else {
                             Toast.makeText(WeatherDetailsActivity.this, "forecast call failed", Toast.LENGTH_SHORT).show();
                         }
@@ -186,10 +218,10 @@ public class WeatherDetailsActivity extends AppCompatActivity {
 
                     if (root.get(0).isDayTime) {
                         Resources resources = getResources();
-                        Drawable drawableDay = getDrawable(R.drawable.day_sky_new);
+                        Drawable drawableDay = getDrawable(R.drawable.day_crop);
                         rlSectionView.setBackground(drawableDay);
-                    }else{
-                        Drawable drawableNight = getDrawable(R.drawable.night_sky_new);
+                    } else {
+                        Drawable drawableNight = getDrawable(R.drawable.night_crop);
                         rlSectionView.setBackground(drawableNight);
                     }
 
@@ -222,6 +254,8 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         ivPressureIcon = findViewById(R.id.iv_pressure_icon);
         tvPressureText = findViewById(R.id.tv_pressure_text);
         tvPressureValue = findViewById(R.id.tv_pressure_value);
+        shimmerFrameLayoutDetails = findViewById(R.id.details_shimmer);
+        relativeLayoutDetails = findViewById(R.id.rl_details);
         ivHumidityIcon = findViewById(R.id.iv_humidity_icon);
         tvHumidityText = findViewById(R.id.tv_humidity_text);
         tvHumidityValue = findViewById(R.id.tv_humidity_value);
@@ -232,5 +266,50 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         tvUv = findViewById(R.id.tv_uv);
         tvWindDirection = findViewById(R.id.tv_wind_direction);
         tvWindDegree = findViewById(R.id.tv_wind_degree);
+        saveButton = findViewById(R.id.save_button);
+    }
+
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(mExampleList);
+        editor.putString("task list", json);
+        editor.apply();
+        Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setInsertButton(String s) {
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                insertItem(s, location_key);
+                saveData();
+            }
+        });
+
+    }
+
+    public void insertItem(String name, String location_key) {
+
+//        for (int i = 0; i < mExampleList.size();i++){
+//            if (mExampleList.get(i).getLine1().equals(location_key)){
+//                Toast.makeText(this, "already added", Toast.LENGTH_SHORT).show();
+//            }else{
+        mExampleList.add(new InsertLocation(name, location_key));
+        InsertLocationAdapter insertLocationAdapter = new InsertLocationAdapter();
+        insertLocationAdapter.notifyItemInserted(mExampleList.size());
+        Toast.makeText(this, "inside insert item", Toast.LENGTH_SHORT).show();
+//            }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
