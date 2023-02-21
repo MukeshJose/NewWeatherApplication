@@ -8,11 +8,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="textColor">#5F1A77</color>
-    <color name="cityTextColor">#CD4DFA</color>
+    <color name="textColor">#AC206D</color>
+    <color name="cityTextColor">#CDA203</color>
     <color name="tempTextColor">#0C1939</color>
     <color name="backGroundColor">#05357F</color>
     <color name="dateBackGroundColor">#01124A</color>
     <color name="newColor">#B7BCBC</color>
     <color name="topColor">#060E33</color>
+
+    <color name="outLineColor">#6200EE</color>
+
+    <color name="search_bar_color">#F65EFF</color>
+    <color name="backgroundColor">#F0F0F5</color>
+
+    <color name="shimmerColor">#9191A5</color>
+    <color name="text_color_2">#FDD540</color>
+    <color name="new_color">#FF9BCC</color>
+
+    <color name="notBlack">#222A36</color>
+
 </resources>

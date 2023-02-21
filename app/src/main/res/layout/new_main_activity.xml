@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/weather_background_bw_cropped"
+>
+
+    <RelativeLayout
+        android:id="@+id/rl_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+       >
+
+
+        <TextView
+            android:id="@+id/tv_hello_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="100dp"
+            android:text="@string/helloText"
+            android:textColor="@color/cityTextColor"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_heading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_hello_text"
+            android:layout_alignStart="@id/tv_hello_text"
+            android:text="@string/heading_text"
+            android:textColor="@color/cityTextColor"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_search_bar_section"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_heading_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/material_on_background_disabled"
+            app:cardCornerRadius="50dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/et_search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textNoSuggestions"
+                    android:padding="10dp"
+                    android:text="london"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:theme="@style/ThemeOverlay.Material3.TextInputEditText"/>
+
+                <ImageView
+                    android:id="@+id/iv_search_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/baseline_search_24" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/saved_location_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_search_bar_section"
+            android:layout_alignStart="@id/tv_hello_text"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/saved_city_background"
+            android:backgroundTint="@color/material_on_primary_disabled"
+            android:elevation="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="@string/saved_locations"
+            android:textColor="@color/cityTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/cv_search_bar_section"
+            android:layout_marginTop="55dp"
+            android:layout_toLeftOf="@id/saved_location_heading"
+            android:background="@color/cityTextColor" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/cv_search_bar_section"
+            android:layout_marginTop="55dp"
+            android:layout_toRightOf="@id/saved_location_heading"
+            android:background="@color/cityTextColor" />
+
+        <TextView
+            android:id="@+id/tv_all_clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/saved_location_heading"
+            android:layout_alignEnd="@id/savedCitiesView"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="-20dp"
+            android:background="@drawable/saved_city_background"
+            android:backgroundTint="@color/material_on_primary_disabled"
+            android:drawableLeft="@drawable/baseline_delete_forever_24"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/cityTextColor"
+            android:padding="10dp"
+            android:text="@string/clearAll"
+            android:textColor="@color/cityTextColor"
+            android:textSize="20sp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/savedCitiesView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/saved_location_heading"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="50dp" />
+        <!--            android:background="@drawable/sub_section_background"-->
+        <!--            android:backgroundTint="@color/material_on_primary_disabled" />-->
+
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_search_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/tl_search_bar"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/shimmerColor" />
+
+
+            <TextView
+                android:id="@+id/tv_search_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@id/tl_search_bar"
+                android:layout_alignBottom="@id/tl_search_bar"
+                android:layout_marginLeft="-4dp"
+                android:layout_toRightOf="@id/tl_search_bar"
+                android:background="@drawable/search_button_background"
+                android:backgroundTint="@color/shimmerColor" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/back_image"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_below="@id/rl_search_section"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/weather_pana"
+            android:orientation="horizontal" />
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_below="@id/back_image"
+           android:orientation="vertical">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_below="@id/back_image"
+               android:layout_marginTop="50dp"
+               android:layout_marginLeft="40dp"
+               android:layout_marginRight="40dp"
+               android:weightSum="2"
+               >
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="200dp"
+                   android:layout_marginRight="30dp"
+                   android:background="@drawable/saved_cities_background"
+                   android:backgroundTint="@color/shimmerColor"
+                   android:layout_weight="1"/>
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="200dp"
+                   android:background="@drawable/saved_cities_background"
+                   android:backgroundTint="@color/shimmerColor"
+                   android:layout_weight="1"
+                   />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_below="@id/back_image"
+               android:layout_marginLeft="40dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="40dp"
+               android:weightSum="2"
+               >
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="200dp"
+                   android:layout_marginRight="30dp"
+                   android:background="@drawable/saved_cities_background"
+                   android:backgroundTint="@color/shimmerColor"
+                   android:layout_weight="1"/>
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="200dp"
+                   android:background="@drawable/saved_cities_background"
+                   android:backgroundTint="@color/shimmerColor"
+                   android:layout_weight="1"
+                   />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_below="@id/back_image"
+               android:layout_marginTop="10dp"
+               android:layout_marginLeft="40dp"
+               android:layout_marginRight="40dp"
+               android:layout_marginBottom="50dp"
+               android:weightSum="2"
+               >
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="200dp"
+                   android:layout_marginRight="30dp"
+                   android:background="@drawable/saved_cities_background"
+                   android:backgroundTint="@color/shimmerColor"
+                   android:layout_weight="1"/>
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="200dp"
+                   android:background="@drawable/saved_cities_background"
+                   android:backgroundTint="@color/shimmerColor"
+                   android:layout_weight="1"
+                   />
+           </LinearLayout>
+       </LinearLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

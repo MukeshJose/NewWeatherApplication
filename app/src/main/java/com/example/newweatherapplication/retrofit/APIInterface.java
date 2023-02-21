@@ -22,8 +22,8 @@ public interface APIInterface {
     @GET("search")
     Call<List<Root>> CALL_APICity_search(@Query("apikey") String api_key, @Query("q") String city_name);
 
-    @GET("204287")
-    Call<List<Root>> CALL_API_location_search(@Query("apikey") String api_key);
+    @GET("{user}")
+    Call<Root> CALL_API_location_search(@Path("user") String user, @Query("apikey") String api_key);
 
     @GET("{user}")
     Call<List<Root>> CALL_APICurrent_condition(@Path("user") String user, @Query("apikey") String api_key, @Query("details") Boolean details);

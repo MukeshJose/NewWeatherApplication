@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_condition_today"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/saved_cities_background"
+        android:backgroundTint="@color/shimmerColor"
+        android:padding="10dp">
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_forecast_title"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_condition_today"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/shimmerColor"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:layout_below="@id/tv_forecast_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black" />
+
+    <View
+        android:id="@+id/middle_view"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@id/view"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/saved_cities_background"
+        android:backgroundTint="@color/shimmerColor" />
+
+    <View
+        android:id="@+id/view_end"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/middle_view"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black" />
+
+
+</RelativeLayout>

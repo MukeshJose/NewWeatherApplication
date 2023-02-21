@@ -1,8 +1,10 @@
 package com.example.newweatherapplication;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import com.example.newweatherapplication.Adapter.FiveDayForecastAdapterNight;
 import com.example.newweatherapplication.model.Root;
 import com.example.newweatherapplication.retrofit.APIClient;
 import com.example.newweatherapplication.retrofit.APIInterface;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.List;
@@ -27,6 +30,7 @@ import retrofit2.Response;
 public class FiveDayForecast extends AppCompatActivity {
 
     private RecyclerView rvFiveDayForecast;
+    ShimmerFrameLayout shimmerFrameLayoutForecast;
     static String locationKey;
     private SwitchMaterial swDayNightToggle;
     private ImageView ivWeatherIcon;
@@ -34,6 +38,7 @@ public class FiveDayForecast extends AppCompatActivity {
     private TextView tvDate;
     private TextView tvCurrentTemperature;
     private TextView tvWeatherCondition;
+    private RelativeLayout relativeLayout;
 
     public FiveDayForecast() {
     }
@@ -48,6 +53,9 @@ public class FiveDayForecast extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_five_day_forecast);
         initView();
+        relativeLayout.setVisibility(View.GONE);
+        shimmerFrameLayoutForecast.setVisibility(View.VISIBLE);
+        shimmerFrameLayoutForecast.startShimmer();
 
         APIInterface apiFiveDayForecast = APIClient.getClientFiveDayForecast().create(APIInterface.class);
         APIInterface apiCurrentCondition = APIClient.getClientCurrentCondition().create(APIInterface.class);
@@ -75,6 +83,10 @@ public class FiveDayForecast extends AppCompatActivity {
                     tvCurrentTemperature.setText((String.valueOf((int) root.get(0).temperature.metric.value)));
                     tvWeatherCondition.setText(root.get(0).weatherText);
 
+
+                    shimmerFrameLayoutForecast.stopShimmer();
+                    shimmerFrameLayoutForecast.setVisibility(View.GONE);
+                    relativeLayout.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -97,6 +109,8 @@ public class FiveDayForecast extends AppCompatActivity {
                         rvFiveDayForecast.setLayoutManager(linearLayoutManager);
                         FiveDayForecastAdapter fiveDayForecastAdapter = new FiveDayForecastAdapter(getApplicationContext(), root);
                         rvFiveDayForecast.setAdapter(fiveDayForecastAdapter);
+
+
                     }
                     swDayNightToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -135,6 +149,8 @@ public class FiveDayForecast extends AppCompatActivity {
         swDayNightToggle = findViewById(R.id.sw_day_night_toggle);
         ivWeatherIcon = findViewById(R.id.iv_weather_icon);
         tvToday = findViewById(R.id.tv_today);
+        relativeLayout = findViewById(R.id.rl_forecast_layout);
+        shimmerFrameLayoutForecast = findViewById(R.id.forecast_shimmer);
         tvDate = findViewById(R.id.tv_date);
         tvCurrentTemperature = findViewById(R.id.tv_current_temperature);
         tvWeatherCondition = findViewById(R.id.tv_weather_condition);

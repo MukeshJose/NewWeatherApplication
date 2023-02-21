@@ -12,7 +12,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/night"
+        android:background="@color/notBlack"
         android:layout_marginBottom="20dp">
 
         <RelativeLayout
